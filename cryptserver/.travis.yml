@@ -1,0 +1,17 @@
+sudo: required
+services:
+    - docker
+
+script:
+    - python test.py
+
+after_sucess:
+    - docker build -t vmasuero/cryptserver ./cryptserver
+    - docker build -t vmasuero/nginxrouter ./nginxrouter
+    - docker build -t vmasuero/webapp ./webapp
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+    - docker push vmasuero/cryptserver
+    - docker push vmasuero/nginxrouter
+    - docker puh vmasuero/webapp
+    
+
