@@ -1,0 +1,24 @@
+version: '3'
+services:
+    nginxrouter:
+        image: minidev/nginxrouter
+        ports:
+            - "3001:80"
+        depends_on:
+            - webapp
+    webapp:
+        image: minidev/webapp
+    cryptserver:
+        image: minidev/cryptserver
+        environment:
+            - FLASK_APP=server.py
+            - REDIS_HOST=redisserver
+    redisserver:
+        image: redis:latest
+
+
+        
+
+        
+
+            

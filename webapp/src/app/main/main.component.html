@@ -1,0 +1,17 @@
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <input type="text" placeholder="Word" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="wordIn">
+</div>
+
+<button type="button" class="btn btn-secondary" (click)="pushword(wordIn)">Put Word</button>
+<button type="button" class="btn btn-secondary" (click)="saveword()">Save Word</button>
+{{ word }}
+
+
+<div class="d-flex flex-column-reverse bd-highlight" >
+  <div class="p-1 bd-highlight" *ngFor="let w of words | keyvalue ">ID: {{ w.value['id'] }}  DATA: {{ w.value['data'] }} </div>
+</div>
+<button type="button" class="btn btn-secondary" (click)="getwords()">Refresh</button>
+<button type="button" class="btn btn-secondary" (click)="clearwords()">Clear Words</button>

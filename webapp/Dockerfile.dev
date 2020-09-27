@@ -1,0 +1,12 @@
+FROM node:alpine
+WORKDIR /app
+
+RUN npm install -g @angular/cli
+COPY .* ./
+COPY *.js ./
+COPY *.json ./
+
+RUN npm install
+COPY src/ ./src
+
+CMD ["npm","start"]
