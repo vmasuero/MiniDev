@@ -1,0 +1,31 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "cryptserver",
+            "image": "vmasuero/cryptserver",
+            "hostname": "cryptserver",
+            "essential": false,
+            "memory": 128
+        },{
+            "name": "webapp",
+            "image": "vmasuero/webapp",
+            "hostname": "webapp",
+            "essential": true,
+            "memory": 128
+        },{
+            "name": "nginxrouter",
+            "image": "vmasuero/nginxrouter",
+            "hostname": "nginxrouter",
+            "essential": false,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80 
+                }
+            ],
+            "links": ["cryptserver","webapp"]
+        }
+    ]
+}
